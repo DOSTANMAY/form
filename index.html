@@ -128,7 +128,7 @@
   <script type="text/javascript">
     function fun1() {
       var name = document.getElementById('n1').value;
-      var nameRegex = /^[A-Z ]{1,12}$/;
+      var nameRegex = /^[A-Z ]{1,30}$/;
 
       if (nameRegex.test(name)) {
         document.getElementById('s1').innerHTML = '';
@@ -142,7 +142,7 @@
 
     function fun2() {
       var name2 = document.getElementById('n2').value;
-      var nameRegex = /^[A-Z ]{1,12}$/;
+      var nameRegex = /^[A-Z ]{1,30}$/;
 
       if (nameRegex.test(name2)) {
         document.getElementById('s2').innerHTML = '';
@@ -219,7 +219,7 @@
 
            
                 document.write("Your Name is: " + nme + "<br>");
-                document.write("Your Fsther's Name is: " + nme2 + "<br>");
+                document.write("Your Father's Name is: " + nme2 + "<br>");
                 document.write("Your Address is: " + add + "<br>");
                 
                 document.write("Your Phone Number is: " + ph + "<br>");
