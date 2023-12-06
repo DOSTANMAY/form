@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form using Bootstrap</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("contact.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    h1 {
+      color: yellow;
+      background-color: black;
+      text-align: center;
+      font-family: Georgia;
+      font-size: 50px;
+      text-shadow: 1px 1px 2px #000;
+      margin-top: 20px; 
+    }
+
+    form {
+      text-align: center;
+      color: #60e6d2;
+      margin-top: 20px; 
+    }
+
+    label {
+      color: #60e6d2;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+       #s1, #s2, #s3, #s4 {
+      display: block;
+      margin-top: 5px;
+      font-size: 15px;
+    }
+
+   
+  </style>
+</head>
+<body background="contact.jpg">
+  <div class="container">
+
+    <h1>Please Fill Up The Form</h1>
+
+    <form>
+      <div class="form-group">
+        <label for="name1">Enter name:</label>
+        <input type="text" id="n1" name="name1" required placeholder="This field is mandatory" class="form-control" required onkeyup="fun1()"><span id="s1"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="name2">Enter Father's name:</label>
+        <input type="text" id="n2" name="name2" class="form-control" required onkeyup="fun2()"><span id="s2"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Enter Address:</label>
+        <textarea id="add1" name="address" class="form-control"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Enter Phone number:</label>
+        <input type="number" id="p1" name="phone" class="form-control" required onkeyup="fun3()"><span id="s3"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Enter email:</label>
+        <input type="email" id="e1" name="email" class="form-control" required onkeyup="fun4()"><span id="s4"></span>
+      </div>
+
+      <div class="container">
+        <label>Enter Gender:</label>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="gender" value="male" class="form-check-input" > Male
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="gender" value="female" class="form-check-input"> Female
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="gender" value="other" class="form-check-input"> Other
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>You are interested in:</label>
+        <select name="v1" class="form-control" id="v1">
+          <option>Your Highest Degree</option>
+          <option value="10">10th</option>
+          <option value="12">11th</option>
+          <option value="ba">Graduation</option>
+           <option value="ma">MASTERS</option>
+          <option value="maphd">MASTERS $ Phd</option>
+         
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>You Speak (You can select more than one):</label>
+        <input type="checkbox" name="language[]" value="bengali"><b>Bengali</b>
+        <input type="checkbox" name="language[]" value="english"><b>English</b>
+        <input type="checkbox" name="language[]" value="hindi"><b>Hindi</b>
+        <input type="checkbox" name="language[]" value="other"><b>Other</b>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" id="submit" class="btn btn-success btn-lg">Submit</button>
+        <button type="reset" id="reset" class="btn btn-danger btn-lg">Reset</button>
+      </div>
+    </form>
+  </div>
+  
+
+  <script type="text/javascript">
+    function fun1() {
+      var name = document.getElementById('n1').value;
+      var nameRegex = /^[A-Z ]{1,12}$/;
+
+      if (nameRegex.test(name)) {
+        document.getElementById('s1').innerHTML = '';
+        document.getElementById('s1').innerHTML = "Correct. Fill up The Next.";
+        document.getElementById('s1').style.color = "#72eb3b";
+      } else {
+        document.getElementById('s1').innerHTML = "Please enter in caps & valid name.";
+        document.getElementById('s1').style.color = "orange";
+      }
+    }
+
+    function fun2() {
+      var name2 = document.getElementById('n2').value;
+      var nameRegex = /^[A-Z ]{1,12}$/;
+
+      if (nameRegex.test(name2)) {
+        document.getElementById('s2').innerHTML = '';
+        document.getElementById('s2').innerHTML = "Correct. Fill up The Next.";
+        document.getElementById('s2').style.color = "#72eb3b";
+      } else {
+        document.getElementById('s2').innerHTML = "Please enter in caps & valid name.";
+        document.getElementById('s2').style.color = "orange";
+      }
+    }
+
+    function fun3() {
+      var phoneNumber = document.getElementById('p1').value;
+
+      if (phoneNumber == "") {
+        document.getElementById('s3').innerHTML = "Please enter your phone number.";
+        document.getElementById('s3').style.color = "orange";
+        return false;
+      }
+
+      if (!/^[7-9]/.test(phoneNumber)) {
+        document.getElementById('s3').innerHTML = "Please start with 7, 8, or 9.";
+        document.getElementById('s3').style.color = "orange";
+        return false;
+      }
+
+      if (phoneNumber.length < 10) {
+        document.getElementById('s3').innerHTML = "Please Enter a 10-digit mobile Number";
+        document.getElementById('s3').style.color = "orange";
+        return false;
+      }
+
+      if (phoneNumber.length > 10) {
+        document.getElementById('s3').innerHTML = "Please Enter a 10-digit mobile Number";
+        document.getElementById('s3').style.color = "orange";
+        return false;
+      }
+
+      document.getElementById('s3').innerHTML = "Phone number is valid.";
+      document.getElementById('s3').style.color = "#72eb3b";
+      return true;
+    }
+
+    function fun4() {
+      var email = document.getElementById('e1').value;
+      var emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+
+      if (emailRegex.test(email)) {
+        document.getElementById('s4').innerHTML = '';
+        document.getElementById('s4').innerHTML = "Correct. Fill up The Next";
+        document.getElementById('s4').style.color = "#72eb3b";
+      } else {
+        document.getElementById('s4').innerHTML = "Invalid email Address";
+        document.getElementById('s4').style.color = "orange";
+      }
+    }
+    
+       $(document).ready(function () {
+        $("#submit").click(function () {
+  
+
+    var nme = $("#n1").val();
+    var nme2 = $("#n2").val();
+    var add = $("#add1").val();
+    var ph = $("#p1").val();
+    var em = $("#e1").val();
+    var gen = $("input[name='gender']:checked").val();
+    var highestDegree = $("#v1 option:selected").text();
+
+    var lang = [];
+    $.each($("input[name='language[]']:checked"), function () {
+      lang.push($(this).val());
+    });
+
+           
+                document.write("Your Name is: " + nme + "<br>");
+                document.write("Your Fsther's Name is: " + nme2 + "<br>");
+                document.write("Your Address is: " + add + "<br>");
+                
+                document.write("Your Phone Number is: " + ph + "<br>");
+                document.write("Your Email is: " + em + "<br>");
+                
+              
+                document.write("Your gender is: " + gen + "<br>");
+                document.write("Your gender is: " + highestDegree + "<br>");
+
+                document.write("Your Language is: " + lang + "<br>");
+               
+            });
+            $("input").focus(function(){
+        $(this).css("background-color", "#d4b4e0");
+      });
+        });
+</script>
+
+</body>
+</html>
